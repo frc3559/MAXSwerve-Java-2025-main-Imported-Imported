@@ -16,7 +16,6 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,8 +25,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.MMotorConstants;
 import frc.robot.Constants.OIConstants;
+import frc.robot.decpreciated.GrabberArm;
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.GrabberArm;
 
 
 /*
@@ -54,9 +53,6 @@ public class RobotContainer {
 
   //subsystem for grabber
   private final GrabberArm m_grabber = new GrabberArm(m_grabberJoint);
-
-  //timer for basic auto
-  private Timer autoTimer = new Timer();
 
   //setpoint for grabber
   private double grabber_angle = 0;
