@@ -1,2 +1,2 @@
-# MAXSwerve-Java-2025-main-Imported-Imported
-Attempting to upload 2025 season robot code. 
+# Copy of REV MaxSwerve template code with adaptations.
+Base developed in conjunction with FRC 3559. Continuing development in collab with 3559.
