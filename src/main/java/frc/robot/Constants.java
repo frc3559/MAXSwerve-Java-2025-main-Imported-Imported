@@ -118,4 +118,19 @@ public final class Constants {
   public static final class NeoMotorConstants {
     public static final double kFreeSpeedRpm = 5676;
   }
+
+  public static final class ElevatorConstants {
+    public static final int k_middleliftID = 14;
+    public static final int k_innerliftID = 15;
+    public static final double k_middleliftkS = 0; //characterize me pls
+    public static final double k_middleliftkV = 0; //characterize me pls
+    public static final double k_middleliftkP = 0.1; 
+    public static final double k_middleliftkD = 0;
+    public static final double k_innerliftkS = 0; //characterize me pls
+    public static final double k_innerliftkV = 0; //characterize me pls
+    public static final double k_innerliftkP = 0.1;
+    public static final double k_innerliftkD = 0;
+    public static final TrapezoidProfile.Constraints prf_middlelift = new TrapezoidProfile.Constraints(0, 0);
+    public static final TrapezoidProfile.Constraints prf_innerlift = new TrapezoidProfile.Constraints(0, 0);
+  }
 }
