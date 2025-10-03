@@ -106,9 +106,32 @@ public class Elevator extends SubsystemBase {
         v_innerliftsp = sp_inner;
     }
 
-    /**Returns a double array with elevator data for troubleshooting or monitoring. Working on index definition.
-     * 
-     * @return Nunya bidness.
+    // index legend for data() array
+    public static final int middle_lift_sp     = 0;
+    public static final int middle_lift_pos    = 1;
+    public static final int middle_lift_ffout  = 2;
+    public static final int middle_lift_pidout = 3;
+    public static final int inner_lift_sp      = 4;
+    public static final int inner_lift_pos     = 5;
+    public static final int inner_lift_ffout   = 6;
+    public static final int inner_lift_pidout  = 7;
+
+    /**
+     * Returns a double array with elevator data for troubleshooting or monitoring.
+     *
+     * <p>Index legend:
+     * <ul>
+     *   <li>{@link #middle_lift_sp}     – middle lift setpoint</li>
+     *   <li>{@link #middle_lift_pos}    – middle lift position</li>
+     *   <li>{@link #middle_lift_ffout}  – middle lift feedforward output</li>
+     *   <li>{@link #middle_lift_pidout} – middle lift PID output</li>
+     *   <li>{@link #inner_lift_sp}      – inner lift setpoint</li>
+     *   <li>{@link #inner_lift_pos}     – inner lift position</li>
+     *   <li>{@link #inner_lift_ffout}   – inner lift feedforward output</li>
+     *   <li>{@link #inner_lift_pidout}  – inner lift PID output</li>
+     * </ul>
+     *
+     * @return array of elevator values in the order described above
      */
     public double[] data() {
         return new double[] {
