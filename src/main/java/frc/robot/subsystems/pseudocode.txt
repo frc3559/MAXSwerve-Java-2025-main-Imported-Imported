@@ -39,3 +39,30 @@ ELEVATOR SUBSYSTEM
         Inner Lift Encoder
             Internal motor encoder planned for use.
             Distance sensor for absolue position planned in future.
+
+ARM SUBSYSTEM
+    Manage height of both stages of elevator.
+        Use PIDF control to manage height.
+        FF constants need to be calculated and characterized.
+        PID must be tuned on site.
+    Setpoints for arm sent via state machine.
+    Grabber to be either on or off.
+    Game piece detection TBD.
+    Pass telemetry back into RobotContainer to allow monitoring and troubleshooting.
+    Handle enable and disable transients smoothly in case of unexpected or improper shutdown.
+        Absolute encoder in the pipes.
+    ELEVATOR HARDWARE
+        Arm
+            Motor used to lift arm to desired angle.
+            Rev NEO V1.1.
+            Ratio unknown.
+            Home or "Zero" is with arm totally vertical facing downward.
+            Maximum travel calculated at 135 degrees.
+        Arm Encoder
+            Rev through bore encoder in duty cycle/absolute mode.
+        Grabber
+            Motor used to intake and outtake game piece.
+            Rev NEO V1.1.
+            Ratio unknown.
+            Motors are to be designed to be either on or off, no setpoint control needed.
+            Prox switch or TOF/distance sensor to detect game piece and turn off motors when grabbing.

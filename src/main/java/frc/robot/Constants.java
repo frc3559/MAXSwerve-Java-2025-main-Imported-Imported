@@ -133,4 +133,9 @@ public final class Constants {
     public static final TrapezoidProfile.Constraints prf_middlelift = new TrapezoidProfile.Constraints(0, 0);
     public static final TrapezoidProfile.Constraints prf_innerlift = new TrapezoidProfile.Constraints(0, 0);
   }
+
+  public static final class ArmConstants {
+    public static final int k_armID = 16;
+    public static final int k_grabberID = 17;
+  }
 }

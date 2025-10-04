@@ -54,8 +54,8 @@ public final class Configs {
     }
 
     public static final class ElevatorConfigs {
-        public static final SparkMaxConfig middleliftConfig = new SparkMaxConfig();
-        public static final SparkMaxConfig innerliftConfig = new SparkMaxConfig();
+        public static final SparkMaxConfig cfg_middlelift = new SparkMaxConfig();
+        public static final SparkMaxConfig cfg_innerlift = new SparkMaxConfig();
 
         static {
             //need to calculate based on ratio and circumference of drive chain sprocket
@@ -63,19 +63,24 @@ public final class Configs {
             double innerlift_convfactor = 0;
 
             //config options
-            middleliftConfig
+            cfg_middlelift
                 .smartCurrentLimit(40)
                 .idleMode(IdleMode.kBrake);
-            middleliftConfig.encoder
+            cfg_middlelift.encoder
                 .positionConversionFactor(middlelift_convfactor) //feet
                 .velocityConversionFactor(middlelift_convfactor / 60); //feet per second
 
-            innerliftConfig
+            cfg_innerlift
                 .smartCurrentLimit(40)
                 .idleMode(IdleMode.kBrake);
-            middleliftConfig.encoder
+            cfg_innerlift.encoder
                 .positionConversionFactor(innerlift_convfactor) //feet
                 .velocityConversionFactor(innerlift_convfactor / 60); //feet per second
         }
+    }
+
+    public static final class ArmConfigs {
+        public static final SparkMaxConfig cfg_arm = new SparkMaxConfig();
+        public static final SparkMaxConfig cfg_grabber = new SparkMaxConfig();
     }
 }

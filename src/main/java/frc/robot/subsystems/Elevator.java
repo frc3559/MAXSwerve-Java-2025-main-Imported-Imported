@@ -50,8 +50,8 @@ public class Elevator extends SubsystemBase {
         enc_innerlift = m_innerlift.getEncoder();
 
         //apply configs
-        m_middlelift.configure(ElevatorConfigs.middleliftConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-        m_innerlift.configure(ElevatorConfigs.innerliftConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        m_middlelift.configure(ElevatorConfigs.cfg_middlelift, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        m_innerlift.configure(ElevatorConfigs.cfg_innerlift, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
         //declare FF and PID controllers
         //FFs are required for manual operation to stop elevator and arm from drooping
@@ -60,9 +60,9 @@ public class Elevator extends SubsystemBase {
             ElevatorConstants.k_middleliftkS, 
             ElevatorConstants.k_middleliftkS);
         pid_middlelift = new ProfiledPIDController(
-            ElevatorConstants.k_middleliftkP, 
+            ElevatorConstants.k_middleliftkP,
             0,
-            ElevatorConstants.k_middleliftkD, 
+            ElevatorConstants.k_middleliftkD,
             ElevatorConstants.prf_middlelift);
         ff_innerlift = new SimpleMotorFeedforward(
             ElevatorConstants.k_innerliftkS, 
