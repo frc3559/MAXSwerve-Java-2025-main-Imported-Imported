@@ -81,7 +81,7 @@ public class RobotContainer {
                     robotOriented),
                 m_robotDrive));
 
-        robotOriented = true;
+        robotOriented = false;
 
         //operate elevator in manual by default, uses controller inputs for now
         //CHECK FOR INVERSIONS!!!!!!!!!!!!!!!!!!!!
