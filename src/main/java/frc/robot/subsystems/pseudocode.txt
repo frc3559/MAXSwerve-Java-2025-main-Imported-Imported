@@ -1,0 +1,68 @@
+PSEUDOCODE AND REQUIREMENTS FOR ELEVATOR / ARM SUBSYSTEM
+
+Arm and elevator to be controlled by automatic setpoint control and a state machine.
+
+STATE MACHINE
+    Will be built as it's own subsystem and each subsystem injected through RobotContainer.
+        Injected through RobotContainer to allow access to other subsystem functions without making subsystems globally public.
+    Main state machine for end effector will send setpoint commands to each subsystem to control state of end effector.
+    Irrational or illegal setpoint commands must be filtered and flagged as illegal or modified to prevent mechanism damage.
+    State machine to be continuously called while machine is enabled. Must be called in a way to comply with FRC safety guidlines.
+        Handled through RobotContainer Command framework, call in ConfigureBindings and schedule as default command for subsys.
+    
+ELEVATOR SUBSYSTEM
+    Manage height of both stages of elevator.
+        Use PIDF control to manage height.
+        FF constants need to be calculated and characterized.
+        PID must be tuned on site.
+    Setpoints sent via state machine.
+    Pass telemetry back into RobotContainer to allow monitoring and troubleshooting.
+    Handle enable and disable transients smoothly in case of unexpected or improper shutdown.
+    Automatic homing routine required to be ran at start of match to home encoders if using internal motor encoders.
+        Absolute distance encoders in the pipes.
+    ELEVATOR HARDWARE
+        Middle Lift
+            Motor used to lift stage 1 of elevator.
+            Rev NEO V1.1.
+            Ratio unknown currently.
+            1st stage home is with stage totally collapsed. (0 inches)
+            Maximum travel calculated as 33.5 inches.
+        Inner Lift
+            Motor used to lift stage 2 of elevator.
+            Rev NEO V1.1.
+            Ratio unknown currently.
+            Stage home is with stage totally extended, at top of travel. (19.5 inches)
+            Maximum travel is 19.5 inches.
+        Middle Lift Encoder
+            Internal motor encoder planned for use.
+            Distance sensor for absolue position planned in future. Maybe.
+        Inner Lift Encoder
+            Internal motor encoder planned for use.
+            Distance sensor for absolue position planned in future.
+
+ARM SUBSYSTEM
+    Manage height of both stages of elevator.
+        Use PIDF control to manage height.
+        FF constants need to be calculated and characterized.
+        PID must be tuned on site.
+    Setpoints for arm sent via state machine.
+    Grabber to be either on or off.
+    Game piece detection TBD.
+    Pass telemetry back into RobotContainer to allow monitoring and troubleshooting.
+    Handle enable and disable transients smoothly in case of unexpected or improper shutdown.
+        Absolute encoder in the pipes.
+    ELEVATOR HARDWARE
+        Arm
+            Motor used to lift arm to desired angle.
+            Rev NEO V1.1.
+            Ratio unknown.
+            Home or "Zero" is with arm totally vertical facing downward.
+            Maximum travel calculated at 135 degrees.
+        Arm Encoder
+            Rev through bore encoder in duty cycle/absolute mode.
+        Grabber
+            Motor used to intake and outtake game piece.
+            Rev NEO V1.1.
+            Ratio unknown.
+            Motors are to be designed to be either on or off, no setpoint control needed.
+            Prox switch or TOF/distance sensor to detect game piece and turn off motors when grabbing.

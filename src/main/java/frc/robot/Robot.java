@@ -3,17 +3,10 @@
 // the WPILib BSD license file in the root directory of this project.
 // a test comment
 package frc.robot;
-import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.SparkMax;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.Constants.DriveConstants;
-import frc.robot.Constants.MMotorConstants;
-import frc.robot.Constants.OIConstants;
 
 /**
  * The VM is configured to automatically run this class, and to call the
