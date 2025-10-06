@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.MMotorConstants;
 import frc.robot.Constants.OIConstants;
+import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Elevator;
 
@@ -33,6 +34,7 @@ public class RobotContainer {
     //subsystems
     private final DriveSubsystem m_robotDrive = new DriveSubsystem();
     private final Elevator m_Elevator = new Elevator();
+    private final Arm m_Arm = new Arm();
 
     //chooser for autos for PP
     private final SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -52,6 +54,7 @@ public class RobotContainer {
         //schedules periodic blocks in subsystems
         m_robotDrive.register();
         m_Elevator.register();
+        m_Arm.register();
 
         m_robotDrive.configureAutobuilder();
 
@@ -88,6 +91,13 @@ public class RobotContainer {
                     (m_operatorController.leftTrigger().getAsBoolean() ? 0.5 : 0) + (m_operatorController.leftBumper().getAsBoolean() ? -0.5 : 0), 
                     (m_operatorController.getLeftY() < -0.5 ? 0.5 : 0) + (m_operatorController.getLeftY() > 0.5 ? -0.5 : 0)), 
                 m_Elevator));
+        
+        //operate arm in manual by default in teleop
+        m_Arm.setDefaultCommand(
+            new RunCommand(
+                () -> m_Arm.arm_manual(
+                    (m_operatorController.rightTrigger().getAsBoolean() ? 0.5 : 0) + (m_operatorController.rightBumper().getAsBoolean() ? -0.5 : 0)),
+                m_Arm));
     }
 
 
@@ -133,11 +143,12 @@ public class RobotContainer {
 
 
     
-    //use your brain homie
+    //self explanatory, add more data as needed to troubleshoot and such
     public void telemetry() {
         SmartDashboard.putNumber("drive controller right X", m_driverController.getRightX());
         SmartDashboard.putNumber("drive controller left X", m_driverController.getLeftX());
         SmartDashboard.putNumber("drive controller left Y", m_driverController.getLeftY());
         SmartDashboard.putNumber("drive heading", m_robotDrive.getHeading());
+        SmartDashboard.putNumber("arm encoder", m_Arm.data()[1]);
     }
 }

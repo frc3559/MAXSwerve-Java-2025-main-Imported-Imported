@@ -69,7 +69,6 @@ public final class Configs {
             cfg_middlelift.encoder
                 .positionConversionFactor(middlelift_convfactor) //feet
                 .velocityConversionFactor(middlelift_convfactor / 60); //feet per second
-
             cfg_innerlift
                 .smartCurrentLimit(40)
                 .idleMode(IdleMode.kBrake);
@@ -82,5 +81,18 @@ public final class Configs {
     public static final class ArmConfigs {
         public static final SparkMaxConfig cfg_arm = new SparkMaxConfig();
         public static final SparkMaxConfig cfg_grabber = new SparkMaxConfig();
+
+        static {
+            //need to calculate
+            double arm_convfactor = 0;
+
+            //configs
+            cfg_arm
+                .smartCurrentLimit(40)
+                .idleMode(IdleMode.kBrake);
+            cfg_arm.absoluteEncoder
+                .positionConversionFactor(arm_convfactor) //rads
+                .velocityConversionFactor(arm_convfactor / 60); //rad/s
+        }
     }
 }

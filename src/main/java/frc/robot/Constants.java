@@ -137,5 +137,10 @@ public final class Constants {
   public static final class ArmConstants {
     public static final int k_armID = 16;
     public static final int k_grabberID = 17;
+    public static final double k_armkS = 0;
+    public static final double k_armkV = 0;
+    public static final double k_armkP = 0.1;
+    public static final double k_armkD = 0;
+    public static final TrapezoidProfile.Constraints prf_arm = new TrapezoidProfile.Constraints(0, 0);
   }
 }

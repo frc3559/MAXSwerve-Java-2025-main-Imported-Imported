@@ -81,9 +81,13 @@ public class Elevator extends SubsystemBase {
      */
     public void manual(double vel_middle, double vel_inner) {
 
-        //calculate next voltage based on velocity
-        v_middleliftFFout = ff_middlelift.calculate(vel_middle);
-        v_innerliftFFout = ff_innerlift.calculate(vel_inner);
+        //temporary to get things moving
+        m_middlelift.set(vel_middle);
+        m_innerlift.set(vel_inner);
+
+        //calculate next voltage based on velocity, use when characterized
+        //v_middleliftFFout = ff_middlelift.calculate(vel_middle);
+        //v_innerliftFFout = ff_innerlift.calculate(vel_inner);
 
         //apply voltage to motors. DO NOT UNCOMMENT UNLESS YOU ARE CERTAIN FF OUTPUT IS RATIONAL!!! USE TELEMETRY TO CHECK!!!!!!
         //m_middlelift.setVoltage(v_middleliftFFout);
